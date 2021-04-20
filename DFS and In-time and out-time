@@ -1,0 +1,33 @@
+/ * Deapth First Search */
+
+void dfs(int u)
+{
+	cout<<u<<" ";
+	vis[u] = 1;
+	for (auto x :adj[u])
+	{
+		if (!vis[x])
+			dfs(x);
+	}
+}
+
+/* In-time and Out-time */
+/* By using this concept we can easily find the Relation b/w any two node is it is parent of other node or not */
+
+vector <int> adj[100];
+int vis[200];
+int intime[200];
+int outime[200];
+int n;
+
+int timer = 1;
+void dfs(int u)
+{
+	vis[u] = 1;
+	intime[u] = timer++;
+	for (auto x : adj[u])
+		if(!vis[x])
+			dfs(x);
+
+	outime[u] = timer++;
+}

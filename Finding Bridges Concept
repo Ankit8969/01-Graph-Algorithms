@@ -1,0 +1,32 @@
+/ * In this concept we check where a graph hai bridges or not 
+    Bridges means when we delete any edges does it increase our connected components */
+    
+    
+ int timer = 1;
+void dfs(int u, int par = -1)
+{
+	in_time[u] = out_time[u] = timer++;
+	vis[u]  = 1;
+
+	for (auto x : adj[u])
+	{
+		if (x == par)
+			continue;
+		if(vis[x] == 1)
+		{
+			out_time[u] = min(in_time[x] , out_time[u]);
+		}
+		else
+		{
+			dfs(x,u);
+			out_time[u] = min(out_time[x] , out_time[u]);
+			if (out_time[x] > in_time[u])
+			{
+				cout<<"Bridge from "<<x<<" "<<u<<endl;
+			}
+		}
+	}
+}
+
+
+

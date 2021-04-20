@@ -1,0 +1,24 @@
+/* Using this concept You can find out all those edge if we remove all those edges we can remove cycles from the graph */
+/* Back-edge can never the Bridges because the due to back-edge it always create cycle */
+
+
+/* Code for printing the back edge */
+
+void dfs(int u, int par)
+{
+	vis[u] = 1;
+	for (auto x : adj[u])
+	{
+		if (!vis[x])
+			dfs(x,u);
+		else
+		{
+			if (x != par)
+			{
+				cout<<x<<" "<<u<<endl;
+			}
+		}
+	}
+}
+
+

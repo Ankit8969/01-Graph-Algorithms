@@ -14,6 +14,16 @@ void dfs(int u)
 /* In-time and Out-time */
 /* By using this concept we can easily find the Relation b/w any two node is it is parent of other node or not */
 
+	1
+.....2      3
+   4
+
+Suppose I have to check 4 is a part of subtree of 2 or not 
+Logic is 
+intime[2] < in-time[4] 
+out-time[2] > out-time[4]
+
+
 vector <int> adj[100];
 int vis[200];
 int intime[200];

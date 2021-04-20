@@ -1,0 +1,74 @@
+/* Strongly Connected components will only happen in directed graph */
+/* For finding the strongly connected components in a graph We have a specific algorithms name is Kosaraju Algorithm */
+
+KOSARAJU ALGORITHMS
+It algorithms will done in three steps
+1) First we have to store the node in the stack A/C to their outime.
+2) Taking the transpose or our given graph it means the change the direction of every edge.
+3) In the last step we have to taking the value of the stack one-by-one and make the dfs call.
+
+/* ...............................Implementation of this algorithm..................................................... *\
+
+// Taking the adjency list 
+vector <int> adj[100];
+vector <int> adjT[100];
+int vis[200];
+int n;
+
+int timer = 1;
+stack <int> s;
+
+// using the dfs before the transpose
+
+void dfs(int u, int par = -1)
+{
+	timer++;
+	vis[u] = 1;
+	for (auto x : adj[u])
+	{
+		if (!vis[x])
+		{
+			dfs(x,u);
+		}
+	}
+	s.push(u);
+}
+
+// After the transpose
+void dfsT(int u, int par = -1)
+{
+	vis[u] = 1;
+	cout<<u<<" ";
+	for (auto x : adjT[u])
+	{
+		if (!vis[x])
+		{
+			dfsT(x,u);
+		}
+	}
+}
+
+void solve()
+{
+	cin>>n;
+	rip(i,0,n)
+	{
+		int x, y;
+		cin>> x >>y;
+		adj[x].push_back(y);
+		adjT[y].push_back(x);
+	}	
+
+	dfs(1);
+	memset(vis,0,sizeof(vis));
+	while (!s.empty())
+	{
+		int  t= s.top();
+		s.pop();
+		if (!vis[t])
+		{
+			dfsT(t);
+			cout<<endl;
+		}
+	}
+}

@@ -1,0 +1,15 @@
+/* Complete Graph means every node is connected with every other nodes */
+/* This algorithm also gives the shortest distance from any one of the node to all other node */
+
+Time Complexity : O(n^3)
+
+Min : O(n^2)
+If the graph is complete than time complexit is  O(n^3)
+
+Drawback...........
+This Algorithm does't work when the weight of cycle is -ve.
+
+By using this algorithm we can check does the cycle in the graph has -ve weight or not.
+If we already relaxed (n-1) times again doing one more time if the relaxing occur then we can say that the cycle which is present in graph has -ve weight.
+
+

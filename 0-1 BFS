@@ -1,0 +1,13 @@
+Concept 
+Suppose you have given a graph in which the weight of edge is given only 0 or 1 and you have to reach from node 1 to n or from any node to any other node. 
+Our given graph is directed. You can do one operation you reverse the directin B/W the edges and the cost of reverse is "1" and you have to find the minimum the cost.
+
+Solution : 
+
+Initially assign the zero weight to all the edge and make a new edge in opposite direction with weight "1" and use Dijkestra's algorithm for finding the shortest distance from 
+initial node to destination node.
+
+But in this Case Time-Compexity is O(V*log(E))
+
+.....................................................We have one more approach to solve this problem using 0-1 BFS...............................................................
+

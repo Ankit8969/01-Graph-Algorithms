@@ -1,0 +1,94 @@
+/* This algorithm is used to finding the shortest distance from one node to all other node if the graph */
+/* This algorithm does't work for -ve weight of edge */
+
+/ * In this algorithm we use priority_queue or set because these two Data Structure provide insertion deletion in log(N) complexity */
+
+
+
+/*..................................Implementation....................................... *\
+
+
+int n ,s;
+vector <pair<int,int>> adj[500];
+int vis[500];
+int dist[500];
+
+void dijkastra(int u)
+{
+	dist[u] = 0;
+	priority_queue <pair<int,int> ,
+					vector<pair<int,int>> , 
+					greater<pair<int,int>>> 	pq;
+	pq.push({0,u});
+
+	// debug1(pq.size());
+	
+	while (!pq.empty())
+	{
+		pair <int,int> temp = pq.top();
+		pq.pop();
+
+		int curr_d= temp.first;
+		int curr = temp.second;
+
+		for (auto x : adj[curr])
+		{
+			if ((x.second + curr_d) < dist[x.first])
+			{
+				dist[x.first] = x.second + curr_d;
+				pq.push({dist[x.first] , x.first});
+			}
+		}
+	}
+}
+
+void solve()
+{
+	cin>>n >> s;
+
+	rip(i,0,n)
+	{
+		int x, y,z;
+		cin>> x >>y >>z;
+		adj[x].push_back({y,z});
+		adj[y].push_back({x,z});
+	}
+	for (int i=0;i<=n;i++)
+		dist[i] = mod;
+
+	dijkastra(s);
+
+	ripe(i,0,8)
+	cout<<dist[i]<<" ";
+	cout<<endl;
+}
+
+
+...........................Input for this algorithm..........................
+14 0
+0 1 4
+0 7 8
+1 2 8
+1 7 11
+2 3 7
+2 8 2
+2 5 4
+3 4 9
+3 5 14
+4 5 10
+5 6 2
+6 7 1
+6 8 6
+7 8 7
+
+.....................Output for this algorithm...........................
+0 4 12 19 21 11 9 8 14 
+
+
+
+
+
+
+
+
+

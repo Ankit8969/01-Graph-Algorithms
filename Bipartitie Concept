@@ -1,0 +1,23 @@
+
+/* Using this algorithm we can detect weather we can divide the graph in two group */
+
+
+.....................................Implementation...................................
+
+bool dfs(int u, int col)
+{
+	vis[u] = 1;
+	color[u] = col;
+
+	for (auto x : adj[u]){
+		if (!vis[x])
+		{
+			if (dfs(x, col^1) == false)
+				return false;
+		}
+		else
+			if (color[x] == color[u])
+				return false;
+	}
+	return true;
+}

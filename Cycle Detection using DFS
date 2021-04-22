@@ -1,0 +1,18 @@
+/* When ever a back edge is present then it must contain a cycle */
+
+bool dfs(int u, int col)
+{
+	vis[u] = 1;
+
+	for (auto x : adj[u]){
+		if (!vis[x])
+		{
+			if (dfs(x, u) == true)
+				return true;
+		}
+		else
+			if (x != par)
+				return true;
+	}
+	return false;
+}

@@ -1,0 +1,3 @@
+/* For finding the diameter of a tree first we select any node and run the dfs and select the fartest node 
+and again run the dfs using that fartest node and find the maxm ditance 
+that ditance is the diameter of a tree */

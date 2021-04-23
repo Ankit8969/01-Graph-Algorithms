@@ -1,0 +1,14 @@
+int dfs(int u)
+{
+	vis[u] = 1;
+	int curr_size = 1;
+	for (auto x : adj[u])
+	{
+		if (vis[x] == 0)
+		{
+			curr_size += dfs(x);
+		}
+	}
+	size[u]= curr_size;
+	return curr_size;
+}

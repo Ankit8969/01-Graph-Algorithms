@@ -1,0 +1,16 @@
+void dfs(int u, int d)
+{
+    dist[u] = d;
+    vis[u] = 1;
+    for (auto x : adj[u])
+    {
+        if (!vis[x])
+            dfs(x, d + 1);
+    }
+}
+
+
+int main()
+{
+  dfs(1 ,0);
+}

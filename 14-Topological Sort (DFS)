@@ -1,0 +1,28 @@
+void dfs(int u)
+{
+    vis[u] = 1;
+    for (auto x : adj[u])
+    {
+        if (!vis[x])
+            dfs(x);
+    }
+    // Stack
+    s.push(u);
+}
+
+void solve()
+{
+    for (int i = 1; i <= n; i++)
+    {
+        if (!vis[i])
+        {
+            dfs(i);
+        }
+    }
+    while (!s.empty())
+    {
+        cout << s.top() << " ";
+        s.pop();
+    }
+    cout << endl;
+}

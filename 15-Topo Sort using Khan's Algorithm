@@ -1,0 +1,10 @@
+
+This Algorithms is is very easy and it is also known as Khan's Algorithm
+
+Step:
+
+First take a queqe data-structure
+store all the nodes in the queue whose indegree is zero
+
+Pop the element one by one 
+and decrease the indegree of all the adjecent node to that node and if it zero than again push into the queue.

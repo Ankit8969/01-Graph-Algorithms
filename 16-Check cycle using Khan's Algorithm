@@ -1,0 +1,5 @@
+store all the value you are getting from khan's algorithm 
+if the size of of vector is equal to the number of node 
+It means there is no any cycle
+else
+cycle is present.

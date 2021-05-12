@@ -1,0 +1,50 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int n;
+vector<int> adj[300005];
+int level[300005];
+int ind[300005];
+set<int> s;
+queue<int> q;
+
+void bfs()
+{
+    while (!q.empty())
+    {
+        int t = q.front();
+        q.pop();
+        for (auto x : adj[t])
+        {
+            level[x] = max(level[x], level[t] + 1);
+            q.push(x);
+        }
+    }
+}
+
+int main()
+{
+    cin >> n;
+    for (int i = 1; i < n; i++)
+    {
+        int a, b;
+        cin >> a >> b;
+        adj[b].push_back(a);
+        ind[a]++;
+        ind[b]++;
+    }
+
+    for (int i = 2; i <= n; i++)
+    {
+        if (ind[i] == 1)
+        {
+            s.insert(i);
+            level[i] = 1;
+            q.push(i);
+        }
+    }
+    bfs();
+
+    for (int i = 1; i <= n; i++)
+        cout << level[i] << " ";
+}

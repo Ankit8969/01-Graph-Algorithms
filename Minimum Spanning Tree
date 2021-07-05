@@ -1,0 +1,5 @@
+A graph have multiple Spanning Tree
+Spanning Tree means : Graph has must n nodes and (n-1) edges.
+Such that you can reach from any node to any other nodes.
+Graph must be weighted and we have to find that spanning tree whose weight is minimum.
+

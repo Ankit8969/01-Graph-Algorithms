@@ -1,0 +1,64 @@
+// aproach for this problem is to first find the topological sort and then 
+taking the one by one value and calculate the distance and update in the distance array.
+
+
+#include <bits/stdc++.h>
+using namespace std;
+
+vector<pair<int, int>> adj[2000];
+int n;
+int x, y;
+int vis[2000];
+stack<int> s;
+
+void dfs(int u)
+{
+    vis[u] = 1;
+    for (auto x : adj[u])
+    {
+        if (!vis[x.first])
+            dfs(x.first);
+    }
+    s.push(u);
+}
+
+int main()
+{
+    int k;
+    cin >> n >> k;
+    for (int i = 0; i < k; i++)
+    {
+        int z;
+        cin >> x >> y >> z;
+        adj[x].push_back({y, z});
+    }
+
+    for (int i = 1; i <= n; i++)
+    {
+        if (!vis[i])
+            dfs(i);
+    }
+
+    int dist[n + 1];
+    for (int i = 1; i <= n; i++)
+        dist[i] = INT_MAX;
+
+    dist[s.top()] = 0;
+
+    while (!s.empty())
+    {
+        int t = s.top();
+        s.pop();
+
+        for (auto x : adj[t])
+        {
+            int d = x.second + dist[t];
+            if (dist[x.first] > d)
+                dist[x.first] = d;
+        }
+    }
+
+    for (int i = 1; i <= n; i++)
+        cout << dist[i] << " ";
+    cout << endl;
+}

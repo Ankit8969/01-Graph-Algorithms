@@ -3,7 +3,7 @@
 
 KOSARAJU ALGORITHMS
 It algorithms will done in three steps
-1) First we have to store the node in the stack A/C to their outime.
+1) First we have to store the node in the stack A/C to their outime.It means topo sort using dfs.
 2) Taking the transpose or our given graph it means the change the direction of every edge.
 3) In the last step we have to taking the value of the stack one-by-one and make the dfs call.
 

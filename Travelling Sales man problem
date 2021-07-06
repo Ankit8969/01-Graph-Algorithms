@@ -1,0 +1,46 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int n = 4, k;
+int price[5][5];
+
+int min_recur(int u, set<int> s)
+{
+    if (s.size() == n - 1)
+    {
+        return price[u][1];
+    }
+
+    s.insert(u);
+
+    int ans = INT_MAX;
+    for (int x = 1; x <= n; x++)
+    {
+        if (s.count(x))
+            continue;
+
+        int t = price[u][x] + min_recur(x, s);
+        ans = min(ans, t);
+    }
+    s.erase(u);
+
+    return ans;
+}
+
+int main()
+{
+    for (int i = 1; i <= n; i++)
+        for (int j = 1; j <= n; j++)
+            cin >> price[i][j];
+    set<int> s;
+    vector<int> path;
+    cout << min_recur(1, s) << endl;
+}
+
+Input
+0 20 42 25
+20 0 30 34
+42 30 0 10
+25 34 10 0
+Output
+85

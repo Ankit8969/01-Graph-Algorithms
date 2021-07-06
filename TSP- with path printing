@@ -1,0 +1,51 @@
+
+#include <bits/stdc++.h>
+using namespace std;
+
+int n = 4, k;
+int price[5][5];
+int ans = INT_MAX;
+vector<int> ourpath;
+
+void min_recur(int u, set<int> s, int sum, vector<int> path)
+{
+    if (s.size() == n - 1)
+    {
+        path.push_back(u);
+        path.push_back(1);
+        if (ans > (sum + price[u][1]))
+        {
+            ans = sum + price[u][1];
+            ourpath = path;
+            return;
+        }
+    }
+
+    s.insert(u);
+    path.push_back(u);
+
+    for (int x = 1; x <= n; x++)
+    {
+        if (s.count(x))
+            continue;
+
+        min_recur(x, s, sum + price[u][x], path);
+    }
+    s.erase(u);
+    path.pop_back();
+}
+
+int main()
+{
+    for (int i = 1; i <= n; i++)
+        for (int j = 1; j <= n; j++)
+            cin >> price[i][j];
+    set<int> s;
+    vector<int> path;
+    min_recur(1, s, 0, path);
+
+    cout << ans << endl;
+    for (auto x : ourpath)
+        cout << x << " ";
+    cout << endl;
+}
